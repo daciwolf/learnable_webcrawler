@@ -8,5 +8,8 @@ RUN go build ./cmd/katana
 FROM alpine:3.20.3
 RUN apk add --no-cache bind-tools ca-certificates chromium
 COPY --from=builder /app/katana /usr/local/bin/
+COPY /python_src/ /home/
+RUN pip install elasticsearch pymongo
 
-ENTRYPOINT ["katana"]
+#ENTRYPOINT ["katana"]
+ENTRYPOINT []
